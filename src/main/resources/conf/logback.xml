@@ -31,7 +31,7 @@
         </encoder>
     </appender>
     <!-- TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF -->
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="rolling"/>
         <appender-ref ref="stdout"/>
     </root>

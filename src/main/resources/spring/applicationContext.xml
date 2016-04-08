@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--<beans xmlns="http://www.springframework.org/schema/beans"-->
-       <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
-       <!--xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">-->
-<beans>
-       <import resource="spring-mybatis.xml"></import>
+<!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+    <import resource="spring-mybatis.xml"></import>
+
+    <bean id="websocket" class="com.demo.websocket.WebsocketEndPoint"/>
+
+    <websocket:handlers>
+        <websocket:mapping path="/websocket" handler="websocket"/>
+        <websocket:handshake-interceptors>
+            <bean class="com.demo.websocket.HandshakeInterceptor"/>
+        </websocket:handshake-interceptors>
+    </websocket:handlers>
 </beans>
